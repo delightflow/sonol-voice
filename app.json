@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "sonol-voice",
+    "name": "소놀비서",
     "slug": "sonol-voice",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,21 +10,46 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#1a1a2e"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "음성 인식을 위해 권한이 필요합니다.",
+        "NSMicrophoneUsageDescription": "음성 명령을 듣기 위해 마이크가 필요합니다."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#1a1a2e"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "permissions": [
+        "RECORD_AUDIO",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.sonol.voice"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "음성 명령을 듣기 위해 마이크가 필요합니다.",
+          "speechRecognitionPermission": "음성 인식을 위해 권한이 필요합니다.",
+          "androidSpeechServicePackages": [
+            "com.google.android.googlequicksearchbox"
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "661da1cf-027e-47f9-8341-27b81f83c36f"
+      }
     }
   }
 }
